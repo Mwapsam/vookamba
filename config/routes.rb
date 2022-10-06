@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  resources :companies
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'about/index'
+  get 'users/index'
+  get 'users/show'
+  get 'users/destroy'
+  get "companies/top"
+  get "companies/admin_companies"
+  resources :categories
+  devise_for :users
+  resources :companies, only: %i[index new create show destroy update] do 
+    resources :reviews, only: %i[new create destroy edit update]
+  end
+  root "companies#index"
 end

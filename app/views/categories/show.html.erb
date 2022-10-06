@@ -1,0 +1,37 @@
+
+<div class="container mt-5">
+	<div class="row flex-md-row-reverse align-items-center">
+		<div class="col-md-6">
+			<div class="lc-block mb-4">
+				<div editable="rich">
+
+					<h2 class="fw-bold display-5 p-text"><%= @category.name %></h2>
+				</div>
+			</div>
+			<div class="lc-block mb-5">
+				<div editable="rich">
+
+
+					<p class="lead text-muted"><%= @category.description %></p>
+				</div>
+			</div>
+		</div>
+		<div class="mt-4 mt-md-0 col-md-6">
+			<div class="lc-block px-4">
+				<div class="position-relative" data-path="0.0.0.1.0">
+                    <%= image_tag @category.picture, sizes: "(max-width: 1080px) 100vw, 1080px", width: "1080", height: "1080", alt: "Photo by Spacejoy", class: "position-relative img-fluid" %>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="card mt-5">
+        <div class="card-body">
+            <% @companies.each do |company| %>
+                <%= link_to company_path(company.id), data: { turbo: false } do %>
+                    <h5 class="card-title"><%= company.name %></h5>
+                    <p class="card-text"><%= company.description %></p>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>

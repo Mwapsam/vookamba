@@ -1,0 +1,23 @@
+
+
+<style>
+   .glass_background {background: rgba( 255, 255, 255, 0.3 ); box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); backdrop-filter: blur( 6.5px ); -webkit-backdrop-filter: blur( 6.5px );}
+</style>
+<div class="container py-5">
+	<div class="row">
+        <% @categories.each do |category|%>
+		<div class="col-lg-3 col-6 g-3 position-relative">
+			<div class="lc-block position-absolute bottom-0 start-0 w-100 text-center ">
+				<div editable="rich">
+					<h3 class="glass_background mx-2 text-white">
+						<%= category.name %>
+					</h3>
+				</div>
+			</div>
+			<%= link_to category_path(category.id), data: { turbo: false }, class: "lc-block" do %>
+                <%= image_tag category.picture, class: "img-fluid hover", sizes: "(max-width: 1080px) 100vw, 1080px", width: "1080", height: "768", alt: "Photo by James Lee", loading: "lazy" %>
+			<% end %>
+		</div>
+        <% end %>
+	</div>
+</div>

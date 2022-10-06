@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg yellow">
+  <div class="container">
+    <button class="navbar-toggler p-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-menu-button-wide"></i>
+    </button>
+    <%= link_to root_path, class: "navbar-brand", data: { turbo: false } do %>
+      <%= image_tag 'vookamba-removebg-preview.png', class: "img-fluid me-1", alt: "Logo", width: "72px", height: "72px" %>
+		<% end %>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><%= link_to "Companies", companies_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+            <li class="nav-item"><%= link_to "Top Rated", companies_top_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+            <li class="nav-item"><%= link_to 'Add Company', new_company_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+            <li class="nav-item"><%= link_to "About", about_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+            <% if current_user.role == 'admin' %>
+              <li class="nav-item"><%= link_to 'Admin', users_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person-circle profile"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><li class="dropdown-item"><%= link_to "Logout", destroy_user_session_path,method: :delete, data: { turbo: false }, class: "nav-link" %></li></li>
+                  <li><li class="dropdown-item"><%= link_to "Account", edit_user_registration_path, data: { turbo: false }, class: "nav-link" %></li></li>                  
+                </ul>
+              </li>
+            <% else %>
+              <li class="nav-item"><%= link_to "Login", new_user_session_path, data: { turbo: false }, class: "nav-link p-3 fw-bold" %></li>
+              <li class="nav-item"><%= link_to "Register", new_user_registration_path, data: { turbo: false }, class: "nav-link p-3 fw-bold" %></li>
+            <% end %>
+        </ul>
+    </div>
+  </div>
+</nav>

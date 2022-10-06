@@ -1,0 +1,26 @@
+<div class="card text-center">
+  <div class="card-header p-5">Your feedback will help this company to improve their services and products</div>
+        <div class="card-body">
+            <%= form_with model: @review, url: company_review_path, method: :patch, local: true, data: { turbo: false } do |f| %> 
+                <div class="container">
+                    <div class="mb-3 mt-5" id="rating-form" >
+                        <label class="px-3">Edit rating </label>
+                    </div>
+                    <div class="mb-5">
+                        <%= f.text_area :comment, placeholder: 'Comment', required: true, class: "form-control" %>
+                    </div>
+                    <div class="mb-5">
+                        <%= f.submit 'Add Review', class: "btn btn-primary" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <div class="card-footer text-muted p-3">Your feedback is highly appreciated</div>
+</div>
+
+<script>
+    $('#rating-form').raty({
+        path: '/assets/',
+        scoreName: 'review[rating]'
+    });
+</script>

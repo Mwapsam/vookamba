@@ -1,0 +1,27 @@
+<div class="d-flex mt-5">
+    <%= render 'shared/admin'%>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                 <th scope="col">Role</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <th scope="row"><%= user.id%></th>
+                        <td><%= user.username%></td>
+                        <td><%= user.email%></td>
+                        <td>User</td>
+                        <td><%= link_to '', users_destroy_path(user.id), class: "bi bi-trash-fill text-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

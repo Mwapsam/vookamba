@@ -1,0 +1,10 @@
+<% @top_rated.each do |top| %>
+    <div class="col-lg-3 col-sm-6 mb-4">            
+        <div class="card m-3">
+            <%= link_to company_path(top.id), data: { turbo: false } do %>
+                <%= image_tag top.image, class: "card-img-top magnitude" %>
+                <p class="p-text text-center pt-1"><%= top.name %></p>
+            <% end %>
+        </div>
+    </div>
+<% end %>

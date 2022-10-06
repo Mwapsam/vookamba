@@ -1,0 +1,11 @@
+<ul class="nav flex-column">
+    <li class="nav-item">
+        <%= link_to 'Users', users_index_path, class: "nav-link p-text" %>
+    </li>
+    <li class="nav-item">
+        <%= link_to 'New Category', new_category_path, class: "nav-link p-text", data: { turbo: false } %>
+    </li>
+    <li class="nav-item">
+        <%= link_to 'Companies', companies_admin_companies_path, class: "nav-link p-text", data: { turbo: false } %>
+    </li>
+</ul>

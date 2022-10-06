@@ -8,9 +8,23 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raty/3.1.1/jquery.raty.js" integrity="sha512-QLAUYcnE+TzNuEdbLs0lZMNil3yinJT2lEtxhLOa2JhKfUJzsLxPcnV///PcwwY0xRPsMHS39iyOjw5hJKWl6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
 
   <body>
+  <%= render 'shared/nav' %>
+    <section class="container">
+        <% if notice %>
+          <p class="alert alert-success text-center"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger text-center"><%= alert %></p>
+        <% end %>
+      </section>
     <%= yield %>
+    <%= render "shared/footer"%>
   </body>
 </html>
