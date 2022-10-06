@@ -12,10 +12,10 @@
             <li class="nav-item"><%= link_to "Top Rated", companies_top_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
             <li class="nav-item"><%= link_to 'Add Company', new_company_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
             <li class="nav-item"><%= link_to "About", about_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
-            <% if current_user.role == 'admin' %>
-              <li class="nav-item"><%= link_to 'Admin', users_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
-            <% end %>
             <% if user_signed_in? %>
+              <% if current_user.role == 'admin' %>
+                <li class="nav-item"><%= link_to 'Admin', users_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+              <% end %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bi bi-person-circle profile"></i>
