@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   resources :companies, only: %i[index new create show destroy update] do 
     resources :reviews, only: %i[new create destroy edit update]
   end
-  root "companies#index"
+  root "categories#index"
 end

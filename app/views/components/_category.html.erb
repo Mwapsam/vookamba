@@ -1,17 +1,21 @@
    <section class="features-1">
       <div class="container">
+          <div class="text-center">
+        <h3 class="section-subheading text-muted p-3">Explore categories </h3>
+    </div>
         <div class="row">
-          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-            <div class="box-feature">
-              <span class="flaticon-house"></span>
-              <h3 class="mb-3">Our Properties</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates, accusamus.
-              </p>
-              <p><a href="#" class="learn-more">Learn More</a></p>
-            </div>
-          </div>
+            <% @categories.each do |category| %>
+              <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                  <div class="box-feature">
+                    <span class="flaticon-house"></span>
+                    <h3 class="mb-3"><%= category.name%></h3>
+                    <p>
+                      <%= truncate(category.description, :length => 47, :separator => ' ') %>
+                    </p>
+                    <%= link_to "Learn More", category_path(category.id), data: {turbo: false}, class: "learn-more" %>
+                  </div>
+              </div>
+            <% end %>
         </div>
       </div>
     </section>

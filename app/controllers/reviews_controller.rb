@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :authenticate_user!
     before_action :find_company
     before_action :find_review, only: [:edit, :update, :destroy]
 

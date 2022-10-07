@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+    before_action :authenticate_user!, except: %i[index show top]
     before_action :set_company
 
     def index
@@ -52,7 +53,7 @@ class CompaniesController < ApplicationController
     end
 
     def top
-        @top_rated = Company.all.joins(:reviews).select("companies.id, companies.name, avg(reviews.rating) as average_rating, count(reviews.id) as number_of_reviews").group("companies.id, companies.name").order("average_rating DESC, number_of_reviews DESC").with_attached_image
+        @top_rated = Company.where(approved: true).joins(:reviews).select("companies.id, companies.name, avg(reviews.rating) as average_rating, count(reviews.id) as number_of_reviews").group("companies.id, companies.name").order("average_rating DESC, number_of_reviews DESC").with_attached_image
     end
 
     def admin_companies

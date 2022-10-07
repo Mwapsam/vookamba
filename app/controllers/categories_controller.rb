@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
+    before_action :authenticate_user!, except: %i[index show]
+
     def index
-        @categories = Category.all
+        @categories = Category.all.includes(:companies)
     end
 
     def show
