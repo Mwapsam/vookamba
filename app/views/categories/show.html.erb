@@ -45,7 +45,7 @@
 									<% end %>
 								</div>
 							</div>
-							<p class="card-text pt-3"><%= company.description %></p>
+							<p class="card-text pt-3"><%= truncate(company.description, :length => 300, :separator => ' ') %></p>
 						<% end %>
 					<% end %>
 				</div>
