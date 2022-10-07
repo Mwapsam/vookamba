@@ -30,7 +30,7 @@
 	<% if @companies.blank? %>
 		<p class="text-center p-text">There's no company registered under <%= @category.name %> category</p>
 	<% else %>
-		<% @category.companies.each do |company| %>
+		<% @companies.each do |company| %>
 			<div class="card mt-2">
 				<div class="card-body">
 					<% if company.approved %>
@@ -38,7 +38,11 @@
 							<div class="d-flex">
 								<h5 class="card-title p-text"><%= company.name %></h5>
 								<div>
-									<div class="average-review-rating px-5" data-score=<%= company.reviews.average(:rating).round(2) %>></div>
+									<% if company.reviews.average(:rating).blank? %>
+										<div class="average-review-rating px-5" data-score= 0 ></div>
+									<% else %>
+										<div class="average-review-rating px-5" data-score=<%= company.reviews.average(:rating).round(2) %>></div>
+									<% end %>
 								</div>
 							</div>
 							<p class="card-text pt-3"><%= company.description %></p>
