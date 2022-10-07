@@ -16,9 +16,9 @@
 			</div><!-- /lc-block -->
 			<div class="d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto col-md-4">
 				<div class="lc-block text-center">
-					<a class="navbar-brand" href="#">
-						<img class="img-fluid me-1" src="https://livecanvas.com/media/logos/ipsum/logoipsum-logo-35.svg" alt="my brand" width="48px" height="48px">
-					</a>
+					<%= link_to root_path, data: {turbo: false}, class: "navbar-brand" do %>
+						<%= image_tag "vookamba-removebg-preview.png", class: "img-fluid me-1", alt: "Logo", width: "48px", height: "48px"%>
+					<% end %>
 				</div>
 			</div>
 			<div class="col-md-4 navbar-expand-md">

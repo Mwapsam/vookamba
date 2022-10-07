@@ -4,8 +4,10 @@
 			<div class="card">
         <div class="card-body">
           <div class="lc-block mb-3 text-center">
-              <img class="img-fluid wp-image-1892" src="https://livecanvas.com/media/logos/ipsum/logoipsum-logo-35.svg" width="" height="39" srcset="" sizes="" alt="">
-              <h2>Change your password</h2>
+              <%= link_to root_path, data: {turbo: false}, class: "navbar-brand" do %>
+                <%= image_tag "vookamba-removebg-preview.png", class: "img-fluid me-1", alt: "Logo", width: "52px", height: "52px"%>
+              <% end %>
+              <h5 class="p-text">Change your password</h5>
             </div>
               <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
                 <%= render "devise/shared/error_messages", resource: resource %>
@@ -20,7 +22,7 @@
                 </div>
 
                 <div class="col-6 mx-auto m-4">
-                  <%= f.submit "Change my password", class: "btn btn-primary btn-sm " %>
+                  <%= f.submit "Change my password", class: "btn-primary btn-sm " %>
                 </div>
               <% end %>
           </div>

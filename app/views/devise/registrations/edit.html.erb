@@ -4,7 +4,9 @@
       <div class="card">
         <div class="card-body">
             <div class="lc-block mb-3 text-center">
-              <img class="img-fluid wp-image-1892" src="https://livecanvas.com/media/logos/ipsum/logoipsum-logo-35.svg" width="" height="39" srcset="" sizes="" alt="">
+              <%= link_to root_path, data: {turbo: false}, class: "navbar-brand" do %>
+                <%= image_tag "vookamba-removebg-preview.png", class: "img-fluid me-1", alt: "Logo", width: "48px", height: "48px"%>
+              <% end %>
               <h2>Edit <%= resource_name.to_s.humanize %></h2>
             </div>
 
@@ -32,7 +34,7 @@
               </div>
 
               <div class="col-6 mx-auto m-4">
-                <%= f.submit "Update", class: "btn btn-primary btn-lg" %>
+                <%= f.submit "Update", class: "btn-primary btn-lg" %>
               </div>
             <% end %>
 
