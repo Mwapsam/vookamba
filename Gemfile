@@ -77,4 +77,4 @@ end
 # Application specific gems
 gem "font-awesome-sass", "~> 6.2.0"
 gem "devise", "~> 4.8"
-
+gem 'aws-sdk', '~> 3'
