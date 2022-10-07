@@ -20,6 +20,8 @@
                         <td><%= user.role%></td>
                         <% if user.role == 'subscriber'%>
                             <td><%= link_to '', users_destroy_path(user.id), class: "bi bi-trash-fill text-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%></td>
+                        <% else %>
+                            <td><i class="bi bi-trash-fill"></i></td>
                         <% end %>
                     </tr>
                 <% end %>
