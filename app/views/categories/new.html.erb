@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h4 class="card-title text-center">Create The Category</h4>
                 <p class="card-description text-center">
-                Please fill in the form below to register your company
+                Please fill in the form below to create the category
                 </p>
                 <%= form_with model: @category, url: categories_path, class: "forms-sample", local: true, data: { turbo: false } do |f| %>
                     <div class="form-group row m-3">
@@ -25,8 +25,8 @@
                             <%= f.file_field :picture, placeholder: 'Company logo', required: true, type: 'file', class: "custom-file-input"  %>
                         </div>
                     </div>
-                    <div class="col text-center m-3">
-                        <%= f.submit 'Add Company', class: "btn btn-primary" %>
+                    <div class="col text-end m-3">
+                        <%= f.submit 'Add Company', class: "btn-primary" %>
                     </div>
                 <% end %>
 
