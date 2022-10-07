@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
 
     def show
         @category = Category.find(params[:id])
-        @companies = Company.where(category_id: @category.id)
+        @companies = Company.where(approved: true, category_id: @category.id).joins(:reviews).select("companies.id, companies.name, avg(reviews.rating) as average_rating, count(reviews.id) as number_of_reviews").group("companies.id, companies.name").order("average_rating DESC, number_of_reviews DESC").with_attached_image.limit(20)
     end
 
     def new

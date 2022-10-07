@@ -24,14 +24,38 @@
 			</div>
 		</div>
 	</div>
-    <div class="card mt-5">
-        <div class="card-body">
-            <% @companies.each do |company| %>
-                <%= link_to company_path(company.id), data: { turbo: false } do %>
-                    <h5 class="card-title"><%= company.name %></h5>
-                    <p class="card-text"><%= company.description %></p>
-                <% end %>
-            <% end %>
-        </div>
-    </div>
+	<div class="text-center pt-5">
+		<h3 class="section-subheading text-muted p-3">Companies </h3>
+	</div>
+	<% if @companies.blank? %>
+		<p class="text-center p-text">There's no company registered under <%= @category.name %> category</p>
+	<% else %>
+		<% @category.companies.each do |company| %>
+			<div class="card mt-2">
+				<div class="card-body">
+					<% if company.approved %>
+						<%= link_to company_path(company.id), data: { turbo: false } do %>
+							<div class="d-flex">
+								<h5 class="card-title p-text"><%= company.name %></h5>
+								<div>
+									<div class="average-review-rating px-5" data-score=<%= company.reviews.average(:rating).round(2) %>></div>
+								</div>
+							</div>
+							<p class="card-text pt-3"><%= company.description %></p>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
 </div>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+  })
+</script>
