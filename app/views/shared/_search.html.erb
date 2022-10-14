@@ -1,0 +1,8 @@
+<%= form_tag(search_path, :method => "get", data: {turbo: false}, id: "form") do %>
+    <div class="input-group search-form m-auto">
+        <%= search_field_tag :search, params[:search], placeholder: "Search company", type: "search", class: "form-control", id: "searchInput" %>
+        <div class="input-group-text search-btn">
+            <%= button_tag "", :class => "bi bi-search border-0 search-btn", :name => nil %>
+        </div>
+    </div>
+<% end %>

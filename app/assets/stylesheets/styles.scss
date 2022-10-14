@@ -10384,12 +10384,12 @@ nav[aria-label="breadcrumb"] li:before {
         color: #fff; }
 
 .yellow {
-  background: #e7d05f;
+  background: #f9fbfc;
 }
 
 .p-text {
   color: #d011f1;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .h-text {
@@ -10399,4 +10399,46 @@ nav[aria-label="breadcrumb"] li:before {
 .profile {
   color: #d011f1;
   font-size: xx-large;
+}
+
+.search-btn {
+  color: #fff;
+  background-color: #d011f1;
+  border: solid 1px #d011f1;
+  font-weight: bold;
+}
+
+.maintext {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+}
+
+.btn-view {
+  background-color: gray;
+}
+
+.nav-bg {
+  background-color: #f9fbfc;
+}
+
+.ico {
+  padding-left: 20px;
+  font-size: 25px;
+}
+
+.primary {
+  color: blue;
+}
+
+.edit {
+  font-size: 24px;
+}
+
+@media screen and (min-width: 480px) {
+  .search-form {
+    width: 50%;
+  }
 }

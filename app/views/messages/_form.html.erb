@@ -1,0 +1,43 @@
+<div class="d-flex">
+  <%= render "shared/business_nav" %>
+  <div class="container">
+    <div class="row">
+          <div class="card">
+              <div class="card-body">
+                  <p class="card-description text-center">
+                  Send the message to your clients
+                  </p>
+                  <%= form_with(model: message, class: "form-group") do |form| %>
+                    <% if message.errors.any? %>
+                      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+                        <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+                        <ul>
+                          <% message.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+
+                    <div class="my-5">
+                        <%= form.label :user_id, "Recepient",  class: "pb-2" %>
+                        <%= fields_for(message) do |package| %>
+                            <%= package.select :user_id, User.all.map { |c| [c.username, c.id] }, {}, {class: 'form-select form-select-lg mb-3'} %>
+                        <% end %> 
+                    </div>
+
+                    <div class="my-5">
+                      <%= form.label :content %>
+                      <%= form.text_area :content, rows: 4, class: "form-control block rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+                    </div>
+
+                    <div class="inline">
+                      <%= form.submit "Send", class: "rounded-lg py-3 px-5 bg-blue-600 inline-block border border-gray-200 font-medium cursor-pointer p-text" %>
+                    </div>
+                  <% end %>
+              </div>
+          </div>
+    </div>
+  </div>
+</div>

@@ -78,3 +78,8 @@ end
 gem "font-awesome-sass", "~> 6.2.0"
 gem "devise", "~> 4.8"
 gem 'aws-sdk', '~> 3'
+gem 'jquery-rails'
+gem 'rails-ujs'
+gem "chartkick"
+
+gem "noticed", "~> 1.6"

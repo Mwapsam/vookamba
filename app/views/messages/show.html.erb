@@ -1,0 +1,10 @@
+<div class="d-flex">
+  <%= render "shared/business_nav" %>
+    <div class="container">
+      <%= render @message %>
+      <div class="d-flex justify-content-center">
+        <%= link_to "", edit_message_path(@message), class: "bi bi-pencil-square px-3 edit", data: {turbo: false} %> 
+        <%= button_to "", @message, method: :delete, class: "bi bi-trash3-fill text-danger", data: {turbo: false} %>
+      </div>
+    </div>
+</div>

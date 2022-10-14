@@ -1,26 +1,10 @@
-
-<div class="container col-xxl-8 px-4 py-5">
-	<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-		<div class="col-10 col-sm-8 col-lg-6">
-      		<%= image_tag "vookamba1.jpeg", class: "d-block mx-lg-auto img-fluid" %>
-		</div>
-		<div class="col-lg-6">
-			<div class="lc-block mb-3">
-				<div editable="rich">
-					<h2 class="fw-bold display-5 p-text">Inspire customer confidence with real reviews</h2>
-				</div>
-			</div>
-
-			<div class="lc-block mb-3">
-				<div editable="rich">
-					<p class="lead">Join the 23,000 business customers using our open review platform.
-					</p>
-				</div>
-			</div>
-
-			<div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start"><%= link_to 'Register your Company', new_company_path, data: { turbo: false }, class: "btn-primary px-4 me-md-2" %>
-			</div>
-
+<div>
+	<div class="row flex-lg-row-reverse align-items-center justify-items-center pb-5 maintxt">
+		<%= image_tag "marjan.jpg", class: "img-responsive opacity-100", height: "500px" %>
+		<div class="text-center overlay px-5">
+			<h1 class="mb-3 p-text fw-bold">Read reviews. Write reviews.</h1>
+			<h4 class="mb-3 p-text fw-bold">Find companies you can trust.</h4>
+			<%= render "shared/search" %>
 		</div>
 	</div>
 </div>

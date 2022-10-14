@@ -1,0 +1,9 @@
+<div class="d-flex">
+  <%= render "shared/business_nav" %>
+  <div class="container" id="messages">
+   <%= link_to "New message", new_message_path , data: {turbo: false} %>
+    <% @messages.each do |message| %>
+      <%= render message %>
+    <% end %>
+  </div>
+</div>

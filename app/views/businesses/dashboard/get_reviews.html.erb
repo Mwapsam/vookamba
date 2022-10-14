@@ -1,0 +1,13 @@
+<div class="d-flex">
+    <%= render "shared/business_nav" %>
+    <div class="container">
+        <% @reviews.each do |review| %>
+            <div class="card m-3">
+                <div class="d-flex flex-row">
+                    <%= review.user.username %>
+                    <%= review.comment %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

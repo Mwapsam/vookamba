@@ -1,2 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="flex justify-between">
+  <% if user_signed_in? %>
+    <%= turbo_frame_tag "notifications", src: notifications_path %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path, class: "text-blue-500" %>
+  <% end %>
+</div>

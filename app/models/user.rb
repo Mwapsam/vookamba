@@ -1,7 +1,11 @@
 class User < ApplicationRecord
   has_one :review
-  has_many :companies
   has_many :categories
+  has_many :packages
+  has_many :messages
+
+  has_many :notifications, as: :recipient, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

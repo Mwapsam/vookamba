@@ -1,11 +1,18 @@
 <ul class="nav flex-column">
-    <li class="nav-item">
-        <%= link_to 'Users', users_index_path, class: "nav-link p-text" %>
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-people-fill ico"></i>
+        <%= link_to 'Users', users_index_path, class: "nav-link p-text", data: {turbo: false} %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-people ico"></i>
+        <%= link_to 'Business', businesses_index_path, class: "nav-link p-text", data: {turbo: false} %>
+    </li>
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-shop-window ico"></i>
         <%= link_to 'New Category', new_category_path, class: "nav-link p-text", data: { turbo: false } %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-building ico "></i>
         <%= link_to 'Companies', companies_admin_companies_path, class: "nav-link p-text", data: { turbo: false } %>
     </li>
 </ul>

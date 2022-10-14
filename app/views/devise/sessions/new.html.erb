@@ -1,4 +1,4 @@
-<div class="container m-5">
+<div class="container mt-5">
 	<div class="row">
 		<div class="col-lg-6 col-xl-5 mx-auto">	
 			<div class="card">
@@ -33,6 +33,9 @@
 
             <div class="d-grid gap-2 col-6 mx-auto m-4">
                 <%= f.submit "Login", class: "btn-primary btn-lg " %>
+            </div>
+            <div class="col text-center">
+              <%= link_to "Don't have account? Register", new_registration_path(resource_name), data: { turbo: false } %><br />
             </div>
           <% end %>
         </div>

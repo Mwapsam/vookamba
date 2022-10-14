@@ -1,0 +1,48 @@
+<section class="container pt-5">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Create A Package</h4>
+                <p class="card-description text-center">
+                Please fill in the form below to create a package
+                </p>
+                <%= form_with model: @package, url: packages_path, class: "forms-sample", local: true, data: { turbo: false } do |f| %>
+                    <% if @package.errors.any? %>
+                        <div style="color: red">
+                            <h2><%= pluralize(@package.errors.count, "error") %> prohibited this package from being saved:</h2>
+
+                            <ul>
+                                <% @package.errors.each do |error| %>
+                                <li><%= error.full_message %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                    <div class="form-group row m-3">
+                        <%= f.label :title, 'Name', class: "col-sm-3 col-form-label" %>
+                        <div class="col-sm-9">
+                            <%= f.text_field :title, placeholder: 'Package name', required: true, class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group row m-3">
+                        <%= f.label :price, 'Price', class: "col-sm-3 col-form-label" %>
+                        <div class="col-sm-9">
+                            <%= f.number_field :price, placeholder: 'Price', class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group row m-3">
+                        <%= f.label :description, 'Description', class: "col-sm-3 col-form-label" %>
+                        <div class="col-sm-9">
+                            <%= f.text_area :description, placeholder: 'Description', required: true, class: "form-control" %>
+                        </div>
+                    </div>
+
+                    <div class="col text-end m-3">
+                        <%= f.submit 'Create Package', class: "btn-primary" %>
+                    </div>
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,2 @@
+module Businesses::DashboardHelper
+end

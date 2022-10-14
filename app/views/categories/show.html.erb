@@ -25,13 +25,13 @@
 		</div>
 	</div>
 	<div class="text-center pt-5">
-		<h3 class="section-subheading text-muted p-3">Companies </h3>
+		<h3 class="section-subheading text-muted p-3">Companies under <%= @category.name %> </h3>
 	</div>
 	<% if @companies.blank? %>
 		<p class="text-center p-text">There's no company registered under <%= @category.name %> category</p>
 	<% else %>
 		<% @companies.each do |company| %>
-			<div class="card mt-2">
+			<div class="card mt-3">
 				<div class="card-body">
 					<% if company.approved %>
 						<%= link_to company_path(company.id), data: { turbo: false } do %>

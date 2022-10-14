@@ -1,0 +1,22 @@
+<ul class="nav flex-column nav-bg pt-3">
+    <li class="nav-item nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-graph-up-arrow ico text-success"></i>
+        <%= link_to "Dashboard", businesses_authenticated_root_path, class: "nav-link p-text fw-bold", data: {turbo: false} %>
+    </li>
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-building ico "></i>
+        <%= link_to "Companies", businesses_dashboard_get_companies_path, data: {turbo: false}, class: "nav-link p-text fw-bold" %>
+    </li>
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-envelope-fill ico primary"></i>
+        <%= link_to "Messages", messages_path, data: {turbo: false}, class: "nav-link p-text fw-bold" %>
+    </li>
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-stars ico text-warning"></i>
+        <%= link_to "Reviews", businesses_dashboard_get_reviews_path, data: {turbo: false}, class: "nav-link p-text fw-bold" %>
+    </li>
+    <li class="nav-item d-flex align-items-center mt-5">
+        <i class="bi bi-calendar2-week ico text-info"></i>
+        <%= link_to 'New Company', new_company_path, data: { turbo: false }, class: "nav-link p-text fw-bold" %>
+    </li>
+</ul>

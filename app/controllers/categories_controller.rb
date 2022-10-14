@@ -1,8 +1,10 @@
 class CategoriesController < ApplicationController
-    before_action :authenticate_user!, except: %i[index show]
+    before_action :authenticate_user!, except: %i[index show search]
 
     def index
         @categories = Category.all.includes(:companies)
+        @reviews = Review.all.limit(6)
+        @companies = Company.where(approved: true).joins(:reviews).select("companies.id, companies.name, companies.description, avg(reviews.rating) as average_rating, count(reviews.id) as number_of_reviews").group("companies.id, companies.name, companies.description").order("average_rating DESC, number_of_reviews DESC").with_attached_image.limit(8)
     end
 
     def show
@@ -15,8 +17,8 @@ class CategoriesController < ApplicationController
     end
 
     def create
-        @user = current_user
-        @category = @user.categories.new(category_params)
+        @business = current_business
+        @category = @business.categories.new(category_params)
         if @category.save
             redirect_to category_path(@category.id), notice: "Category successfully created"
         else
@@ -39,6 +41,15 @@ class CategoriesController < ApplicationController
             redirect_to category_path(@category)
         else
             render :edit, alert: 'Error please try again later!'
+        end
+    end
+
+    def search
+        if params[:search].blank?
+            redirect_to categories_path and return
+        else
+            @parameter = params[:search].downcase
+            @results = Company.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
         end
     end
 

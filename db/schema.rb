@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_06_092108) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_095615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_092108) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "businesses", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username"
+    t.bigint "package_id"
+    t.index ["email"], name: "index_businesses_on_email", unique: true
+    t.index ["package_id"], name: "index_businesses_on_package_id"
+    t.index ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -57,11 +72,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_092108) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.bigint "category_id"
     t.boolean "approved", default: false
+    t.bigint "business_id"
+    t.index ["business_id"], name: "index_companies_on_business_id"
     t.index ["category_id"], name: "index_companies_on_category_id"
-    t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "packages", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price"
+    t.index ["user_id"], name: "index_packages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -91,9 +136,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_092108) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "businesses", "packages"
   add_foreign_key "categories", "users"
+  add_foreign_key "companies", "businesses"
   add_foreign_key "companies", "categories"
-  add_foreign_key "companies", "users"
+  add_foreign_key "messages", "users"
+  add_foreign_key "packages", "users"
   add_foreign_key "reviews", "companies"
   add_foreign_key "reviews", "users"
 end

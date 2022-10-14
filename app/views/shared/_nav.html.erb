@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
             <li class="nav-item"><%= link_to "Companies", companies_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
-            <li class="nav-item"><%= link_to "Top Rated", companies_top_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
-            <li class="nav-item"><%= link_to 'Business', new_company_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
-            <li class="nav-item"><%= link_to "About", about_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+            <li class="nav-item"><%= link_to "Categories", companies_top_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+            
             <% if user_signed_in? %>
               <% if current_user.role == 'admin' %>
                 <li class="nav-item"><%= link_to 'Admin', users_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
               <% end %>
+    
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bi bi-person-circle profile"></i>
@@ -25,9 +25,26 @@
                   <li><li class="dropdown-item"><%= link_to "Account", edit_user_registration_path, data: { turbo: false }, class: "nav-link" %></li></li>                  
                 </ul>
               </li>
-            <% else %>
+            <% elsif !business_signed_in? %>
               <li class="nav-item"><%= link_to "Login", new_user_session_path, data: { turbo: false }, class: "nav-link p-3 fw-bold" %></li>
               <li class="nav-item"><%= link_to "Register", new_user_registration_path, data: { turbo: false }, class: "nav-link p-3 fw-bold" %></li>
+            <% end %>
+
+            <% if business_signed_in? %>
+            <li class="nav-item"><%= link_to "Dashboard", businesses_authenticated_root_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person-circle profile"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><li class="dropdown-item"><%= link_to "Logout", destroy_business_session_path,method: :delete, data: { turbo: false }, class: "nav-link" %></li></li>
+                  <li><li class="dropdown-item"><%= link_to "Account", edit_business_registration_path, data: { turbo: false }, class: "nav-link" %></li></li>                  
+                </ul>
+              </li>
+            <% elsif !user_signed_in? %>
+              <li class="nav-item"><%= link_to "For Business", about_index_path, data: { turbo: false }, class: "nav-link p-3 fw-bold p-text" %></li>
+              <%# <li class="nav-item"><%= link_to "Login", new_user_session_path, data: { turbo: false }, class: "nav-link p-3 fw-bold" %></li>
+              <%# <li class="nav-item"><%= link_to "Register", new_user_registration_path, data: { turbo: false }, class: "nav-link p-3 fw-bold" %></li>
             <% end %>
         </ul>
     </div>

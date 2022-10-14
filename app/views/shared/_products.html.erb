@@ -7,7 +7,7 @@
             <div class="portfolio-caption pt-3">
                 <div>
                 </div>
-                <div class="portfolio-caption-subheading text-muted p-2"><%= link_to company.name, company_path(company.id), data: { turbo: false } %></div>
+                <div class="portfolio-caption-subheading text-muted p-2" id="product"><%= link_to company.name, company_path(company.id), data: { turbo: false }, id: "product" %></div>
             </div>
         </div>
     </div>

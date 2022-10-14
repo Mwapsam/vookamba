@@ -1,0 +1,41 @@
+<div class="container pb-5">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<div class="lc-block mb-4"><span editable="inline" class="small mt-4 d-block">LOREM IPSUM</span>
+				<h2 editable="inline" class="display-2 mb-0"><b>Pricing</b></h2>
+				<p editable="inline"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id<br> ligula malesuada placerat sit amet quis enim.</p>
+			</div><!-- /lc-block -->
+		</div>
+	</div>
+	<div class="row mt-4 text-center">
+        <% @packages.each do |package| %>
+            <div class="col-lg-3 col-md-6 text-dark my-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="my-0" editable="inline"><%= package.title %></h4>
+                    </div>
+                    <div class="card-body">
+                        <% if package.title == "Custom" %>
+                            <p>Price to be negotiated</p>
+                        <% else %>
+                            <h5 class="card-title"><span class="display-4" editable="inline"><b>$<%= package.price%></b></span><span editable="inline" class="lead">/mo</span></h5>
+                        <% end %>
+
+                        <div class="card-text my-4 lc-block">
+                            <div editable="rich">
+                                <ul class="list-unstyled">
+
+                                    <li editable="inline" class=""><%= simple_format(package.description) %></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="d-grid lc-block">
+                            <%= link_to "Register", new_business_registration_path, data: { turbo: false }, class: "btn-lg  btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+	</div>
+</div>

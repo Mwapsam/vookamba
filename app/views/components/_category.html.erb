@@ -4,18 +4,22 @@
         <h3 class="section-subheading text-muted p-3">Explore categories </h3>
     </div>
         <div class="row">
-            <% @categories.each do |category| %>
-              <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                  <div class="box-feature">
-                    <span class="flaticon-house"></span>
-                    <h3 class="mb-3"><%= category.name%></h3>
-                    <p>
-                      <%= truncate(category.description, :length => 47, :separator => ' ') %>
-                    </p>
-                    <%= link_to "Learn More", category_path(category.id), data: {turbo: false}, class: "learn-more" %>
-                  </div>
-              </div>
-            <% end %>
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
+            <div class="carousel-inner">
+              <% @categories.each do |category| %>
+                <div class="col-6 col-lg-3 carousel-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="box-feature">
+                      <span class="flaticon-house"></span>
+                      <h3 class="mb-3"><%= category.name%></h3>
+                      <p>
+                        <%= truncate(category.description, :length => 47, :separator => ' ') %>
+                      </p>
+                      <%= link_to "Learn More", category_path(category.id), data: {turbo: false}, class: "learn-more" %>
+                    </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </section>
